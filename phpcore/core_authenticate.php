@@ -13,7 +13,7 @@
     $pwd1 = $_POST['pwd1'];
     $pwdN = passAjinomoto($pwd1);
 
-      $sql_u = "SELECT * FROM systemusers WHERE `uname`='$username' AND `pword`='$pwdN' LIMIT 1";
+      $sql_u = "SELECT * FROM accounts WHERE `uname`='$username' AND `pword`='$pwdN' LIMIT 1";
       $res_u = mysqli_query($con, $sql_u);
     
       //check if user exist, and password is correct
@@ -24,8 +24,8 @@
               while($extract = mysqli_fetch_array($res_u))
               {
                  $username = $extract['uname'];
-                 $role = $extract['urole'];
-                 $uid = $extract['uid'];
+                 //$role = $extract['urole'];
+                 $uid = $extract['user_id'];
                  $status = $extract['status'];
                   //echo "<script type='text/javascript'>alert('extracted!');</script>";      
               }
@@ -35,27 +35,24 @@
                 {
                     //check if active account is account admin
                     //redirect to account management page
-                    if ($role === 'SystemAdmin')
+                    if ($status === 'A')
                     {
                       session_cache_expire(10);
                       session_start();
-                      $_SESSION["urole"] = $role;
                       $_SESSION["uname"] = $username;
                       $_SESSION["status"] = $status;
-                      header("Location: gatekeeper.php");
-                       echo "<script type='text/javascript'>alert('account_admin!');</script>";      
+                      header("Location: .php");
                     }
                     //check if active account is analyst
                     //redirect to main landing page, for soil analyst 
-                    else if ($role === 'SystemAdmin')
+                    else if ($status === 'A')
                     {
                       session_cache_expire(10);
                       session_start();
-                      $_SESSION["urole"] = $role;
                       $_SESSION["uname"] = $username;
                       $_SESSION["status"] = $status;
-                      header("Location: gatekeeper.php");
-                       echo "<script type='text/javascript'>alert('analyst account!');</script>";     
+                      header("Location: .php");
+                          
                     }
                     else
                     {
@@ -70,7 +67,7 @@
                     
                     echo "<script>
                         alert('Invalid Login Details!');
-                        window.location.href='login.html';
+                        window.location.href='index.html';
                         </script>";
                     exit();
               }
@@ -89,7 +86,7 @@
   }
 
   function passAjinomoto($keypass){
-      $dbcon = mysqli_connect('localhost', 'root', '', 'mclccisn_gatekeeper');
+      $dbcon = mysqli_connect('localhost', 'root', '', 'cookmaster');
       $p2 = $keypass;
       $p1 = md5($p2);
       $getQRY = mysqli_query($dbcon, "SELECT PASSWORD('$p1') as PWORD;");

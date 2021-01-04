@@ -18,9 +18,9 @@
     $pwd2 = $_POST['pwd2'];
     $pwdN = passAjinomoto($pwd1);
     $role = $_POST['role'];
-    $status = "deactivated";
+    $status = "A";
 
-      $sql_u = "SELECT * FROM accounts WHERE username='$username'";
+      $sql_u = "SELECT * FROM accounts WHERE uname='".$username."'";
       $res_u = mysqli_query($con, $sql_u);
     
       if (mysqli_num_rows($res_u) > 0) 
@@ -32,7 +32,7 @@
       {
         if ($pwd1 === $pwd2)
         {
-           $query = "INSERT INTO accounts (`fname`, `lname`, `username`, `password`, `status`) 
+           $query = "INSERT INTO accounts (`fname`, `lname`, `uname`, `pword`, `status`) 
                     VALUES ('$fname','$lname','$username', '$pwdN', '$status')";
                     
            $results = mysqli_query($con, $query);
