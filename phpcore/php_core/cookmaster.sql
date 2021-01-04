@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0.1
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 19, 2020 at 06:42 AM
--- Server version: 10.1.32-MariaDB
--- PHP Version: 5.6.36
+-- Generation Time: Jan 04, 2021 at 11:53 AM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -30,16 +29,19 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `accounts` (
   `user_id` int(11) NOT NULL,
-  `u_name` varchar(30) NOT NULL,
-  `pass` varchar(30) NOT NULL
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `fname` varchar(50) NOT NULL,
+  `lname` varchar(50) NOT NULL,
+  `status` varchar(1) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `accounts`
 --
 
-INSERT INTO `accounts` (`user_id`, `u_name`, `pass`) VALUES
-(1, 'user1', 'password');
+INSERT INTO `accounts` (`user_id`, `username`, `password`, `fname`, `lname`, `status`) VALUES
+(1, 'testuser', 'testuser', '', '', '');
 
 -- --------------------------------------------------------
 
