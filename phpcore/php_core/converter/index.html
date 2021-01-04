@@ -1,0 +1,41 @@
+<html>
+
+<head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div id="converter">
+        <label for="quantity">Quantity: </label>
+        <input required name="quantity" id="quantity" placeholder="quantity"></input>
+        <label for="measure-from">from: </label>
+        <select name="measure-from" id="measure-from">
+            <option value="ml">milliliter</option>
+            <option value="l">liter</option>
+            <option value="tsp">teaspoon</option>
+            <option value="tbs">tablespoon</option>
+            <option value="oz">ounce</option>
+            <option value="cup">cup</option>
+            <option value="pt">pint</option>
+            <option value="qt">quart</option>
+        </select>
+        <label for="measure-to">to: </label>
+        <select name="measure-to" id="measure-to">
+            <option value="ml">milliliter</option>
+            <option value="l">liter</option>
+            <option value="tsp">teaspoon</option>
+            <option value="tbs">tablespoon</option>
+            <option value="oz">ounce</option>
+            <option value="cup">cup</option>
+            <option value="pt">pint</option>
+            <option value="qt">quart</option>
+        </select>
+        <input type="button" value="Convert" id="convert" />
+    </div>
+    <h3 id="result-box">Convertion result: <span id="result"></span></h3>
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="Converter.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
